@@ -19,14 +19,14 @@ repositories {
 
 dependencies {
 
-    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
+    // https://mvnrepository.com/artifact/org.testng/testng
+    testImplementation 'org.testng:testng:7.10.2'
    
     // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
-    implementation 'io.github.bonigarcia:webdrivermanager:5.5.3'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.8.0'
 
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
-    implementation 'org.seleniumhq.selenium:selenium-java:4.14.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.20.0'
 
 }
 
@@ -37,5 +37,17 @@ dependencies {
 //run.dependsOn startScript
 
 //test.dependsOn startScript
+
+test {
+    useTestNG() {
+        suites 'src/test/resources/testng.xml'
+    }
+
+    // Configure test logging
+    testLogging {
+        showStandardStreams=true
+        events "Passed", "Skipped", "Failed"
+    }
+}
 
 mainClassName = 'demo.App'
